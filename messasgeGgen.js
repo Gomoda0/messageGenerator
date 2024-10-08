@@ -5,45 +5,47 @@ function generarNumeroRandom(num) {
 
 //Se declaran las listas de actividades.
 const listaDeActividades = {
-  montana: ["Senderismo", "Alpinismo", "Tirolesa", "Decesno a rapel"],
-  lago: ["Cayack", "Natacion", "Buceo"],
-  campamento: ["Limpieza", "Cocina", "Ordenar Almacen", "Guaradia"],
+  montana: ['Senderismo', 'Alpinismo', 'Tirolesa', 'Decesno a rapel'],
+  lago: ['Cayack', 'Natacion', 'Buceo'],
+  campamento: ['Limpieza', 'Cocina', 'Ordenar Almacen', 'Guaradia'],
 };
 
 //Conjunto de frases final
-mensajesFinal = [];
+let mensajesFinal = [];
 
-//Se itera sobre el onjeto para genera las frases
+//Se itera sobre el objeeto para genera las frases
 
-for (let lugar in listaDeActividades) {
+for (let prop in listaDeActividades) {
   //Se usan las propiedades del objeto para genara el conjunto de frases finales.
-  let unaPosicion = generarNumeroRandom(listaDeActividades.palabra.jenght);
+  let unaPosicion = generarNumeroRandom(listaDeActividades[prop].length)
 
-  switch (lugar) {
-    case "montaña":
+  switch (prop) {
+    case 'montana':
       mensajesFinal.push(
-        `Hoy en la montaña te toca hacer ${listaDeActividades.lugar.unaPosicion}`
+        `Hoy en la montaña te toca hacer ${listaDeActividades[prop][unaPosicion]}`
       );
       break;
-    case "lago":
+    case 'lago':
       mensajesFinal.push(
-        `Hoy en el lago tu actividad es: ${listaDeActividades.palabra.unaPosicion}`
+        `Hoy en el lago tu actividad es: ${listaDeActividades[prop][unaPosicion]}`
       );
       break;
-    case "campamento":
+    case 'campamento':
       mensajesFinal.push(
-        `Esto no es gratis, hay que trabajar, hpy te toca ${listaDeActividades.lugar.unaPosicion}`
+        `Esto no es gratis, hay que trabajar, hoy te toca ${listaDeActividades[prop][unaPosicion]}`
       );
       break;
     default:
-      listaDeActividades.push('NO hay información');
-      break;
+      mensajesFinal.push('NO hay información');
+
   }
-
-  function formatearMensajeFinal(mensajesFinal){
-    const mensajeFormateado = mensajesFinal.join('\n');
-    console.log(mensajeFormateado);
-  }
-
-
 }
+
+function formatearMensajeFinal(x) {
+  const mensajeFormateado = mensajesFinal.join('\n');
+  console.log(mensajeFormateado);
+}
+
+formatearMensajeFinal(mensajesFinal);
+
+
